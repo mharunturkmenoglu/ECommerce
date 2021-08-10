@@ -13,12 +13,10 @@ namespace ECommmerce.Service.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        private readonly IConfiguration _config;
         private readonly IAdoNetDataReader _adoNetDataReader;
 
-        public CategoryManager(IConfiguration config, IAdoNetDataReader adoNetDataReader)
+        public CategoryManager(IAdoNetDataReader adoNetDataReader)
         {
-            _config = config;
             _adoNetDataReader = adoNetDataReader;
         }
 
