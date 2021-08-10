@@ -1,0 +1,11 @@
+C:\source\e-commerce\ECommerce\ECommerce.Entities\bin\Debug\net5.0\ECommmerce.Entities.deps.json
+C:\source\e-commerce\ECommerce\ECommerce.Entities\bin\Debug\net5.0\ECommmerce.Entities.dll
+C:\source\e-commerce\ECommerce\ECommerce.Entities\bin\Debug\net5.0\ref\ECommmerce.Entities.dll
+C:\source\e-commerce\ECommerce\ECommerce.Entities\bin\Debug\net5.0\ECommmerce.Entities.pdb
+C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.AssemblyInfoInputs.cache
+C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.AssemblyInfo.cs
+C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.csproj.CoreCompileInputs.cache
+C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.dll
+C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ref\ECommmerce.Entities.dll
+C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.pdb

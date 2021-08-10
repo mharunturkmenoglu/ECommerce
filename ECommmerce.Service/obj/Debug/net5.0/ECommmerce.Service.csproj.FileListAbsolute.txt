@@ -1,0 +1,5 @@
+C:\source\e-commerce\ECommerce\ECommmerce.Service\obj\Debug\net5.0\ECommmerce.Service.csproj.AssemblyReference.cache
+C:\source\e-commerce\ECommerce\ECommmerce.Service\obj\Debug\net5.0\ECommmerce.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\e-commerce\ECommerce\ECommmerce.Service\obj\Debug\net5.0\ECommmerce.Service.AssemblyInfoInputs.cache
+C:\source\e-commerce\ECommerce\ECommmerce.Service\obj\Debug\net5.0\ECommmerce.Service.AssemblyInfo.cs
+C:\source\e-commerce\ECommerce\ECommmerce.Service\obj\Debug\net5.0\ECommmerce.Service.csproj.CoreCompileInputs.cache
