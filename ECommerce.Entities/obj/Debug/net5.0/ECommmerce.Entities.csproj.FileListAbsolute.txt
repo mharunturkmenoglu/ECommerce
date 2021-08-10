@@ -9,3 +9,15 @@ C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.En
 C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.dll
 C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ref\ECommmerce.Entities.dll
 C:\source\e-commerce\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.pdb
+C:\source\ECommerce\ECommerce.Entities\bin\Debug\net5.0\ECommmerce.Entities.deps.json
+C:\source\ECommerce\ECommerce.Entities\bin\Debug\net5.0\ECommmerce.Entities.dll
+C:\source\ECommerce\ECommerce.Entities\bin\Debug\net5.0\ref\ECommmerce.Entities.dll
+C:\source\ECommerce\ECommerce.Entities\bin\Debug\net5.0\ECommmerce.Entities.pdb
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.csproj.AssemblyReference.cache
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.AssemblyInfoInputs.cache
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.AssemblyInfo.cs
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.csproj.CoreCompileInputs.cache
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.dll
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ref\ECommmerce.Entities.dll
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.pdb

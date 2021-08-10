@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommmerce.Service\\ECommmerce.Service.csproj": {}
+    "C:\\source\\ECommerce\\ECommmerce.Service\\ECommmerce.Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommmerce.Service\\ECommmerce.Service.csproj": {
+    "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommmerce.Service\\ECommmerce.Service.csproj",
-        "projectName": "ECommmerce.Service",
-        "projectPath": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommmerce.Service\\ECommmerce.Service.csproj",
+        "projectUniqueName": "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj",
+        "projectName": "ECommerce.Data",
+        "projectPath": "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj",
         "packagesPath": "C:\\Users\\Mustafa Harun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommmerce.Service\\obj\\",
+        "outputPath": "C:\\source\\ECommerce\\ECommerce.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mustafa Harun\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,141 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj",
+        "projectName": "ECommmerce.Entities",
+        "projectPath": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj",
+        "packagesPath": "C:\\Users\\Mustafa Harun\\.nuget\\packages\\",
+        "outputPath": "C:\\source\\ECommerce\\ECommerce.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mustafa Harun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\source\\ECommerce\\ECommmerce.Service\\ECommmerce.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\source\\ECommerce\\ECommmerce.Service\\ECommmerce.Service.csproj",
+        "projectName": "ECommmerce.Service",
+        "projectPath": "C:\\source\\ECommerce\\ECommmerce.Service\\ECommmerce.Service.csproj",
+        "packagesPath": "C:\\Users\\Mustafa Harun\\.nuget\\packages\\",
+        "outputPath": "C:\\source\\ECommerce\\ECommmerce.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mustafa Harun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj": {
+                "projectPath": "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj"
+              },
+              "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj": {
+                "projectPath": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

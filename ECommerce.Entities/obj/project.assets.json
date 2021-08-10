@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj",
+      "projectUniqueName": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj",
       "projectName": "ECommmerce.Entities",
-      "projectPath": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj",
+      "projectPath": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj",
       "packagesPath": "C:\\Users\\Mustafa Harun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce.Entities\\obj\\",
+      "outputPath": "C:\\source\\ECommerce\\ECommerce.Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mustafa Harun\\AppData\\Roaming\\NuGet\\NuGet.Config",

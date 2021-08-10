@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce\\ECommerce.csproj": {}
+    "C:\\source\\ECommerce\\ECommerce\\ECommerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce\\ECommerce.csproj": {
+    "C:\\source\\ECommerce\\ECommerce\\ECommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce\\ECommerce.csproj",
+        "projectUniqueName": "C:\\source\\ECommerce\\ECommerce\\ECommerce.csproj",
         "projectName": "ECommerce",
-        "projectPath": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce\\ECommerce.csproj",
+        "projectPath": "C:\\source\\ECommerce\\ECommerce\\ECommerce.csproj",
         "packagesPath": "C:\\Users\\Mustafa Harun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce\\obj\\",
+        "outputPath": "C:\\source\\ECommerce\\ECommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mustafa Harun\\AppData\\Roaming\\NuGet\\NuGet.Config",

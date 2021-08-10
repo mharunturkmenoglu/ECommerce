@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj": {}
+    "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj": {
+    "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj",
+        "projectUniqueName": "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj",
         "projectName": "ECommerce.Data",
-        "projectPath": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj",
+        "projectPath": "C:\\source\\ECommerce\\ECommerce.Data\\ECommerce.Data.csproj",
         "packagesPath": "C:\\Users\\Mustafa Harun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mustafa Harun\\Desktop\\ECommerce\\e-commerce\\ECommerce\\ECommerce.Data\\obj\\",
+        "outputPath": "C:\\source\\ECommerce\\ECommerce.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mustafa Harun\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
