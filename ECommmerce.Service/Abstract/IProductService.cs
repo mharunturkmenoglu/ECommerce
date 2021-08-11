@@ -8,14 +8,14 @@ namespace ECommmerce.Service.Abstract
 {
     public interface IProductService
     {
-        Product Get(int productID);
+        Product Get(int productId);
         List<Product> GetAll();
         List<Product> GetAllByNonDeleted();
         List<Product> GetAllByNonDeletedAndActive();
-        List<Product> GetAllByCategory(int product);
+        List<Product> GetAllByCategory(int categoryId);
         void Add(Product product, string createdByName);
         void Update(Product product, string modifiedByName);
         void Delete(int productId, string modifiedByName);
-        void HardDelete(int productID);
+        void HardDelete(int productId);
     }
 }
