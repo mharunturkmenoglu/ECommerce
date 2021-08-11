@@ -36,17 +36,35 @@ namespace ECommmerce.Service.Concrete
 
         public List<Category> GetAllByNonDeleted()
         {
-            throw new NotImplementedException();
+            string queryScript = "select * from dbo.Categories where IsDeleted = false";
+            var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
+            return categoryList;
         }
 
         public List<Category> GetAllByNonDeletedAndActive()
         {
-            throw new NotImplementedException();
+            string queryScript = "select * from dbo.Categories where IsDeleted = false and IsActive = true";
+            var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
+            return categoryList;
         }
 
         public void Add(Category category, string createdByName)
         {
-            throw new NotImplementedException();
+            var categoryAdd =
+                _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Categories where Name = '{category.Name}'");
+
+            if (categoryAdd.Name == null)
+            {
+                string queryScript = $"Insert Into Categories(Name,Description,IsDeleted,IsActive,CreatedDate,ModifiedDate,CreatedByName,ModifiedByName,Note)" +
+                                     $"Values('{category.Name}','{category.Description}','{category.IsDeleted}','{category.IsActive}','{category.CreatedDate}'," +
+                                     $"'{category.ModifiedDate}','{category.CreatedByName}','{category.ModifiedByName}','{category.Note}')";
+                _adoNetDataReader.AddCategory(queryScript);
+            }
+            else
+            {
+                throw new Exception("It s already created.");
+                // It s already created.
+            }
         }
 
         public void Update(Category category, string modifiedByName)

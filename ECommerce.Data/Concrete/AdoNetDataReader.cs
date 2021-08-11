@@ -79,6 +79,16 @@ namespace ECommerce.Data.Concrete
             return category;
         }
 
+        public void AddCategory(string queryScript)
+        {
+            var connectionString = _config.GetConnectionString("LocalDB");
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand(queryScript, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
         public List<Product> GetProductListDataReader(string queryScript)
         {
             var productList = new List<Product>();
