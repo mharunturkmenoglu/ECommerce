@@ -64,14 +64,14 @@ namespace ECommmerce.Service.Concrete
 
         public User GetByEmail(string email)
         {
-            var queryScript = $"select * from dbo.Users where Email = {email}";
+            var queryScript = $"select * from Users where Email = '{email}'";
             var user = _adoNetDataReader.GetUserDataReader(queryScript);
             return user;
         }
 
         public User GetByEmailAndPassword(string email, string password)
         {
-            var queryScript = $"select * from Users where Email = 'admin@gmail.com' and [Password] = 'admin'";
+            var queryScript = $"select * from Users where Email = '{email}' and [Password] = '{password}'";
             var user = _adoNetDataReader.GetUserDataReader(queryScript);
             return user;
         }
