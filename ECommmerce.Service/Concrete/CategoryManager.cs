@@ -55,10 +55,10 @@ namespace ECommmerce.Service.Concrete
 
             if (categoryAdd.Name == null)
             {
-                string queryScript = $"Insert Into Categories(Name,Description,IsDeleted,IsActive,CreatedDate,ModifiedDate,CreatedByName,ModifiedByName,Note)" +
-                                     $"Values('{category.Name}','{category.Description}','{category.IsDeleted}','{category.IsActive}','{category.CreatedDate}'," +
-                                     $"'{category.ModifiedDate}','{category.CreatedByName}','{category.ModifiedByName}','{category.Note}')";
-                _adoNetDataReader.AddCategory(queryScript);
+                string script = $"Insert Into Categories(Name,Description,IsDeleted,IsActive,CreatedDate,ModifiedDate,CreatedByName,ModifiedByName,Note)" +
+                                $"Values('{category.Name}','{category.Description}','{category.IsDeleted}','{category.IsActive}','{category.CreatedDate}'," +
+                                $"'{createdByName}','{createdByName}','{category.ModifiedByName}','{category.Note}')";
+                _adoNetDataReader.ExecuteNonQueryCategory(script);
             }
             else
             {
@@ -69,12 +69,40 @@ namespace ECommmerce.Service.Concrete
 
         public void Update(Category category, string modifiedByName)
         {
-            throw new NotImplementedException();
+            var categoryUpdate =
+                _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Categories where Id = '{category.Id}'");
+
+            if (categoryUpdate.Name != null)
+            {
+                string script = $"Update Categories " +
+                                     $"Set Name = '{category.Name}',Description='{category.Description}',IsDeleted='{category.IsDeleted}',IsActive='{category.IsActive}'," +
+                                     $"CreatedDate ='{category.CreatedDate}',ModifiedDate = '{category.ModifiedDate}',CreatedByName = '{category.CreatedByName}'," +
+                                     $"ModifiedByName = '{modifiedByName}',Note = '{category.Note}'" +
+                                     $"where Id = '{category.Id}'";
+                _adoNetDataReader.ExecuteNonQueryCategory(script);
+            }
+            else
+            {
+                throw new Exception("The category has not been find.");
+            }
         }
 
         public void Delete(int categoryID, string modifiedByName)
         {
-            throw new NotImplementedException();
+            var categoryDelete =
+                _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Categories where Id = '{categoryID}'");
+
+            if (categoryDelete.Name != null)
+            {
+                string script = $"Update Categories " +
+                                $"Set IsDeleted = 'true',ModifiedByName ='{modifiedByName}' " +
+                                $"where Id = {categoryID}";
+                _adoNetDataReader.ExecuteNonQueryCategory(script);
+            }
+            else
+            {
+                throw new Exception("The category has not been find.");
+            }
         }
 
         public void HardDelete(int categoryID)

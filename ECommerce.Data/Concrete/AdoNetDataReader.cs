@@ -79,7 +79,7 @@ namespace ECommerce.Data.Concrete
             return category;
         }
 
-        public void AddCategory(string queryScript)
+        public void ExecuteNonQueryCategory(string queryScript)
         {
             var connectionString = _config.GetConnectionString("LocalDB");
             SqlConnection connection = new SqlConnection(connectionString);
