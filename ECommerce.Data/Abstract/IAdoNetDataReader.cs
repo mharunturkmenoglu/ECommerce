@@ -12,7 +12,7 @@ namespace ECommerce.Data.Abstract
     {
         List<Category> GetCategoryListDataReader(string queryScript);
         Category GetCategoryDataReader(string queryScript);
-        void ExecuteNonQueryCategory(string queryScript);
+        void ExecuteNonQuery(string script);
         List<Product> GetProductListDataReader(string queryScript);
         Product GetProductDataReader(string queryScript);
         List<User> GetUserListDataReader(string queryScript);
