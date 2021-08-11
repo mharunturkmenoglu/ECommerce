@@ -12,7 +12,7 @@ namespace ECommerce.Entities.Concrete
     {
         public string Name { get; set; }
         public int Quantity { get; set; }
-        public float Coast { get; set; }
+        public double Coast { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
     }
