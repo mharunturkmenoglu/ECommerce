@@ -8,13 +8,16 @@ namespace ECommmerce.Service.Abstract
 {
     public interface IUserService
     {
-        void Get (int userID);
-        void GetAll();
-        void GetAllByNonDeleted();
-        void GetAllByNonDeletedAndActive();
+        User Get (int userID);
+        User GetByEmail (string email);
+        User GetByEmailAndPassword (string email, string password);
+        List<User> GetAll();
+        List<User> GetAllByNonDeleted();
+        List<User> GetAllByNonDeletedAndActive();
         void Add(User user, string createdByName);
         void Update(User user, string modifiedByName);
         void Delete(int userID, string modifiedByName);
         void HardDelete(int userID);
+
     }
 }

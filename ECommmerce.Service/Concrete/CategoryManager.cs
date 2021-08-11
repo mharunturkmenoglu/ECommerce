@@ -20,7 +20,36 @@ namespace ECommmerce.Service.Concrete
             _adoNetDataReader = adoNetDataReader;
         }
 
+        public Category Get(int categoryID)
+        {
+            var queryScript = $"select * from dbo.Categories where Id = {categoryID}";
+            var category = _adoNetDataReader.GetCategoryDataReader(queryScript);
+            return category;
+        }
+
+        public List<Category> GetAll()
+        {
+            string queryScript = "select * from dbo.Categories";
+            var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
+            return categoryList;
+        }
+
+        public List<Category> GetAllByNonDeleted()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Category> GetAllByNonDeletedAndActive()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Add(Category category, string createdByName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Category category, string modifiedByName)
         {
             throw new NotImplementedException();
         }
@@ -30,50 +59,7 @@ namespace ECommmerce.Service.Concrete
             throw new NotImplementedException();
         }
 
-        public void Get(int categoryID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetAll()
-        {
-            var categoryList = new List<Category>();
-            var queryScript = "select * from dbo.Categories where [Id] = 1";
-
-            var dataReader = _adoNetDataReader.GetDataReader(queryScript);
-            while (dataReader.Read())
-            {
-                var category = new Category();
-                category.Id = 1;
-                category.Name = (string)dataReader["Name"];
-                category.Description = (string)dataReader["Description"];
-                category.IsDeleted = true;
-                category.IsActive = true;
-                category.CreatedDate = DateTime.Now;
-                category.ModifiedDate = DateTime.Now;
-                category.CreatedByName = (string)dataReader["CreatedByName"];
-                category.ModifiedByName = (string)dataReader["ModifiedByName"];
-                category.Note = "note";
-                categoryList.Add(category);
-            }
-        }
-
-        public void GetAllByNonDeleted()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetAllByNonDeletedAndActive()
-        {
-            throw new NotImplementedException();
-        }
-
         public void HardDelete(int categoryID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Category category, string modifiedByName)
         {
             throw new NotImplementedException();
         }

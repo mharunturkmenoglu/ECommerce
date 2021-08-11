@@ -8,10 +8,10 @@ namespace ECommmerce.Service.Abstract
 {
     public interface ICategoryService
     {
-        void Get(int categoryID);
-        void GetAll();
-        void GetAllByNonDeleted();
-        void GetAllByNonDeletedAndActive();
+        Category Get(int categoryID);
+        List<Category> GetAll();
+        List<Category> GetAllByNonDeleted();
+        List<Category> GetAllByNonDeletedAndActive();
         void Add(Category category, string createdByName);
         void Update(Category category, string modifiedByName);
         void Delete(int categoryID, string modifiedByName);
