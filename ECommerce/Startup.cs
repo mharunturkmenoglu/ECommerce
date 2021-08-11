@@ -31,6 +31,8 @@ namespace ECommerce
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<IAdoNetDataReader,AdoNetDataReader>();
             services.AddControllers();
             services.AddSwaggerGen(c =>

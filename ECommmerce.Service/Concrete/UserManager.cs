@@ -71,7 +71,7 @@ namespace ECommmerce.Service.Concrete
 
         public User GetByEmailAndPassword(string email, string password)
         {
-            var queryScript = $"select * from dbo.Users where Email = {email} and Password = {password}";
+            var queryScript = $"select * from Users where Email = 'admin@gmail.com' and [Password] = 'admin'";
             var user = _adoNetDataReader.GetUserDataReader(queryScript);
             return user;
         }
