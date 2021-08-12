@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using ECommerce.Api.Authentication;
 using ECommerce.Api.Controllers;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Entities.Dtos;
@@ -21,10 +22,12 @@ namespace ECommerce
     public class UserController : BaseApiController
     {
         private readonly IUserService _userService;
+        private readonly IAuthenticationService _authenticationService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IAuthenticationService authenticationService)
         {
             _userService = userService;
+            _authenticationService = authenticationService;
         }
         [AllowAnonymous]
         [HttpPost("login")]
@@ -35,7 +38,8 @@ namespace ECommerce
                 var user = _userService.GetByEmailAndPassword(userLoginDto.Email, userLoginDto.Password);
                 if (user.UserName != null && user.Password != null)
                 {
-                    return user;
+                    var token = _authenticationService.Authenticate(user.UserName);
+                    return token == null ? Unauthorized() :  Ok(token);
                 }
                 else
                 {
@@ -46,15 +50,14 @@ namespace ECommerce
             {
                 return BadRequest("Wrong Email or Password");
             }
-
         }
+
         [HttpPost("adduser")]
         public ActionResult Add(UserAddDto userAddDto)
         {
             if (ModelState.IsValid)
             {
-                _userService.Add(new User
-                {
+                _userService.Add(new User {
                     Email = userAddDto.Email,
                     Password = userAddDto.Password,
                     UserName = userAddDto.UserName,
