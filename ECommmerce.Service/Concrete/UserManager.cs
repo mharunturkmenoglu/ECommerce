@@ -34,22 +34,54 @@ namespace ECommmerce.Service.Concrete
 
         public List<User> GetAllByNonDeleted()
         {
-            throw new NotImplementedException();
+            string queryScript = "select * from dbo.Users where IsDeleted = false and IsActive = true";
+            var userList = _adoNetDataReader.GetUserListDataReader(queryScript);
+            return userList;
         }
 
         public List<User> GetAllByNonDeletedAndActive()
         {
-            throw new NotImplementedException();
+            string queryScript = "select * from Users where IsDeleted = false and IsActive = true";
+            var userList = _adoNetDataReader.GetUserListDataReader(queryScript);
+            return userList;
         }
 
         public void Add(User user, string createdByName)
         {
-            throw new NotImplementedException();
+            var userAdd =
+                _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Users where Email = '{user.Email}'");
+
+            if (user.Email == null)
+            {
+                string script = $"Insert Into Users(Description,IsDeleted,IsActive,CreatedDate,ModifiedDate,CreatedByName,ModifiedByName,Note,UserName,Email,Password)" +
+                                $"Values('{user.Description}','{user.IsDeleted}','{user.IsActive}','{DateTime.Now}'," +
+                                $"'{DateTime.Now}','{createdByName}','{createdByName}','{user.Note}','{user.UserName}','{user.Email}','{user.Password}')";
+                _adoNetDataReader.ExecuteNonQuery(script);
+            }
+            else
+            {
+                throw new Exception("It s already created.");
+            }
         }
 
         public void Update(User user, string modifiedByName)
         {
-            throw new NotImplementedException();
+            var userUpdate =
+                _adoNetDataReader.GetUserDataReader($"select * from dbo.Categories where Id = '{user.Email}'");
+
+            if (userUpdate.Email != null)
+            {
+                string script = $"Update Users " +
+                                $"Set Description='{user.Description}',IsDeleted='{user.IsDeleted}',IsActive='{user.IsActive}'," +
+                                $"CreatedDate ='{user.CreatedDate}',ModifiedDate = '{DateTime.Now}',CreatedByName = '{user.CreatedByName}'," +
+                                $"ModifiedByName = '{modifiedByName}',Note = '{user.Note}',UserName ='{user.UserName}',Email='{user.Email}',Password='{user.Password}'" +
+                                $"where Id = '{user.Id}'";
+                _adoNetDataReader.ExecuteNonQuery(script);
+            }
+            else
+            {
+                throw new Exception("The category has not been find.");
+            }
         }
 
         public void Delete(int userID, string modifiedByName)
