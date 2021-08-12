@@ -49,9 +49,9 @@ namespace ECommmerce.Service.Concrete
         public void Add(User user, string createdByName)
         {
             var userAdd =
-                _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Users where Email = '{user.Email}'");
+                _adoNetDataReader.GetUserDataReader($"select * from dbo.Users where Email = '{user.Email}'");
 
-            if (user.Email == null)
+            if (userAdd.Email == null && userAdd.UserName == null)
             {
                 string script = $"Insert Into Users(Description,IsDeleted,IsActive,CreatedDate,ModifiedDate,CreatedByName,ModifiedByName,Note,UserName,Email,Password)" +
                                 $"Values('{user.Description}','{user.IsDeleted}','{user.IsActive}','{DateTime.Now}'," +
