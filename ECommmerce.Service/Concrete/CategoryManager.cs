@@ -56,14 +56,13 @@ namespace ECommmerce.Service.Concrete
             if (categoryAdd.Name == null)
             {
                 string script = $"Insert Into Categories(Name,Description,IsDeleted,IsActive,CreatedDate,ModifiedDate,CreatedByName,ModifiedByName,Note)" +
-                                $"Values('{category.Name}','{category.Description}','{category.IsDeleted}','{category.IsActive}','{category.CreatedDate}'," +
-                                $"'{category.ModifiedDate}','{createdByName}','{category.ModifiedByName}','{category.Note}')";
+                                $"Values('{category.Name}','{category.Description}','{category.IsDeleted}','{category.IsActive}','{DateTime.Now}'," +
+                                $"'{DateTime.Now}','{createdByName}','{createdByName}','{category.Note}')";
                 _adoNetDataReader.ExecuteNonQuery(script);
             }
             else
             {
                 throw new Exception("It s already created.");
-                // It s already created.
             }
         }
 
@@ -76,7 +75,7 @@ namespace ECommmerce.Service.Concrete
             {
                 string script = $"Update Categories " +
                                      $"Set Name = '{category.Name}',Description='{category.Description}',IsDeleted='{category.IsDeleted}',IsActive='{category.IsActive}'," +
-                                     $"CreatedDate ='{category.CreatedDate}',ModifiedDate = '{category.ModifiedDate}',CreatedByName = '{category.CreatedByName}'," +
+                                     $"CreatedDate ='{category.CreatedDate}',ModifiedDate = '{DateTime.Now}',CreatedByName = '{category.CreatedByName}'," +
                                      $"ModifiedByName = '{modifiedByName}',Note = '{category.Note}'" +
                                      $"where Id = '{category.Id}'";
                 _adoNetDataReader.ExecuteNonQuery(script);
@@ -95,7 +94,7 @@ namespace ECommmerce.Service.Concrete
             if (categoryDelete.Name != null)
             {
                 string script = $"Update Categories " +
-                                $"Set IsDeleted = 'true',ModifiedByName ='{modifiedByName}' " +
+                                $"Set IsDeleted = 'true',ModifiedByName ='{modifiedByName}', ModifiedDate='{DateTime.Now}' " +
                                 $"where Id = {categoryID}";
                 _adoNetDataReader.ExecuteNonQuery(script);
             }

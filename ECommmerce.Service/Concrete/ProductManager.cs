@@ -61,8 +61,8 @@ namespace ECommmerce.Service.Concrete
             if (productAdd.Name == null)
             {
                 string script = $"Insert Into Products(Name,Description,IsDeleted,IsActive,CreatedDate,ModifiedDate,CreatedByName,ModifiedByName,Note,Quantity,Coast,CategoryId)" +
-                                $"Values('{product.Name}','{product.Description}','{product.IsDeleted}','{product.IsActive}','{product.CreatedDate}'," +
-                                $"'{product.CreatedDate}','{createdByName}','{product.ModifiedByName}','{product.Note}', '{product.Quantity}', '{product.Coast}', '{product.CategoryId}')";
+                                $"Values('{product.Name}','{product.Description}','{product.IsDeleted}','{product.IsActive}','{DateTime.Now}'," +
+                                $"'{DateTime.Now}','{createdByName}','{createdByName}','{product.Note}', '{product.Quantity}', '{product.Coast}', '{product.CategoryId}')";
                 _adoNetDataReader.ExecuteNonQuery(script);
             }
             else
@@ -80,7 +80,7 @@ namespace ECommmerce.Service.Concrete
             {
                 string script = $"Update Products " +
                                 $"Set Name = '{product.Name}',Description='{product.Description}',IsDeleted='{product.IsDeleted}',IsActive='{product.IsActive}'," +
-                                $"CreatedDate ='{product.CreatedDate}',ModifiedDate = '{product.ModifiedDate}',CreatedByName = '{product.CreatedByName}'," +
+                                $"CreatedDate ='{product.CreatedDate}',ModifiedDate = '{DateTime.Now}',CreatedByName = '{product.CreatedByName}'," +
                                 $"ModifiedByName = '{modifiedByName}',Note = '{product.Note}',Quantity ='{product.Quantity}',Coast ='{product.Coast}',CategoryId ='{product.CategoryId}'" +
                                 $"where Id = '{product.Id}'";
                 _adoNetDataReader.ExecuteNonQuery(script);
@@ -99,7 +99,7 @@ namespace ECommmerce.Service.Concrete
             if (productDelete.Name != null)
             {
                 string script = $"Update Products " +
-                                $"Set IsDeleted = 'true',ModifiedByName ='{modifiedByName}' " +
+                                $"Set IsDeleted = 'true',ModifiedByName ='{modifiedByName}',ModifiedDate={DateTime.Now} " +
                                 $"where Id = {productId}";
                 _adoNetDataReader.ExecuteNonQuery(script);
             }
