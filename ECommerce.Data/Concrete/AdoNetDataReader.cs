@@ -164,7 +164,7 @@ namespace ECommerce.Data.Concrete
                 user.Id = Convert.ToInt32(dataReader["Id"]);
                 user.Email = (string)dataReader["Email"];
                 user.UserName = (string)dataReader["UserName"];
-                user.Password = Encoding.ASCII.GetBytes((string)dataReader["Password"]);
+                user.Password = (string)dataReader["Password"];
                 user.Description = (string)dataReader["Description"];
                 user.IsDeleted = Convert.ToBoolean(dataReader["IsDeleted"]);
                 user.IsActive = Convert.ToBoolean(dataReader["IsActive"]);
@@ -191,7 +191,7 @@ namespace ECommerce.Data.Concrete
                 user.Id = Convert.ToInt32(dataReader["Id"]);
                 user.Email = (string)dataReader["Email"];
                 user.UserName = (string)dataReader["UserName"];
-                user.Password = Encoding.ASCII.GetBytes((string)dataReader["Password"]);
+                user.Password = (string)dataReader["Password"];
                 user.Description = (string)dataReader["Description"];
                 user.IsDeleted = Convert.ToBoolean(dataReader["IsDeleted"]);
                 user.IsActive = Convert.ToBoolean(dataReader["IsActive"]);
