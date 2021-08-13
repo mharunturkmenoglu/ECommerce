@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Service.Abstract;
+using ECommmerce.Service.Results.Concrete;
 using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
@@ -17,12 +18,19 @@ namespace ECommerce.Api.Controllers
         {
             _productService = productService;
         }
-
         [HttpGet("allproducts")]
         public ActionResult<IEnumerable<Product>> GetAllProduct()
         {
-            var products = _productService.GetAll();
-            return products;
+            var result = _productService.GetAllByNonDeleted();
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+            
         }
 
         [HttpPost("updateproduct")]
@@ -43,6 +51,20 @@ namespace ECommerce.Api.Controllers
             else
             {
                 return BadRequest("Enter valid product.");
+            }
+        }
+
+        [HttpPost("deleteproduct")]
+        public ActionResult<Product> DeleteProduct(int productId)
+        {
+            var result = _productService.Delete(productId, "admin");
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
             }
         }
     }
