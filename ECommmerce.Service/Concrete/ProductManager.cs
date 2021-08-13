@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ECommerce.Data.Abstract;
 using ECommerce.Entities.Concrete;
+using ECommmerce.Entities.Dtos;
 using ECommmerce.Service.Abstract;
+using ECommmerce.Service.Results.Abstract;
+using ECommmerce.Service.Results.Concrete;
 
 namespace ECommmerce.Service.Concrete
 {
@@ -18,42 +21,82 @@ namespace ECommmerce.Service.Concrete
             _adoNetDataReader = adoNetDataReader;
         }
 
-        public Product Get(int productId)
+        public IDataResult<ProductDto> Get(int productId)
         {
             var queryScript = $"select * from dbo.Products where Id = {productId}";
             var product = _adoNetDataReader.GetProductDataReader(queryScript);
-            return product;
+            if (product.Name != null)
+            {
+                return new DataResult<ProductDto>(ResultStatus.Success, "The Product has been successfully find.", new ProductDto
+                {
+                    Product = product
+                });
+            }
+            return new DataResult<ProductDto>(ResultStatus.Error, "The Product has not been find.", null);
         }
 
-        public List<Product> GetAll()
+        public IDataResult<ProductListDto> GetAll()
         {
             var queryScript = "select * from dbo.Products";
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
-            return productList;
+
+            if (productList.Count > 1)
+            {
+                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully find.",
+                    new ProductListDto
+                    {
+                        Articles = productList
+                    });
+            }
+            return new DataResult<ProductListDto>(ResultStatus.Error, "Any product has not been found.", null);
         }
 
-        public List<Product> GetAllByNonDeleted()
+        public IDataResult<ProductListDto> GetAllByNonDeleted()
         {
-            string queryScript = "select * from dbo.Products where IsDeleted = false";
+            string queryScript = "select * from dbo.Products where IsDeleted = 0";
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
-            return productList;
+            if (productList.Count > 1)
+            {
+                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully find.",
+                    new ProductListDto
+                    {
+                        Articles = productList
+                    });
+            }
+            return new DataResult<ProductListDto>(ResultStatus.Error, "Any product has not been found.", null);
         }
 
-        public List<Product> GetAllByNonDeletedAndActive()
+        public IDataResult<ProductListDto> GetAllByNonDeletedAndActive()
         {
-            string queryScript = "select * from dbo.Products where IsDeleted = false and IsActive = true";
+            string queryScript = "select * from dbo.Products where IsDeleted = 0 and IsActive = 1";
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
-            return productList;
+            if (productList.Count > 1)
+            {
+                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully find.",
+                    new ProductListDto
+                    {
+                        Articles = productList
+                    });
+            }
+            return new DataResult<ProductListDto>(ResultStatus.Error, "Any product has not been found.", null);
         }
 
-        public List<Product> GetAllByCategory(int categoryId)
+        public IDataResult<ProductListDto> GetAllByCategory(int categoryId)
         {
             string queryScript = $"select * from dbo.Products where CategoryId = '{categoryId}'";
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
-            return productList;
+            if (productList.Count > 1)
+            {
+                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully find.",
+                    new ProductListDto
+                    {
+                        Articles = productList
+                    });
+            }
+            return new DataResult<ProductListDto>(ResultStatus.Error, "Any product has not been found.", null);
         }
 
-        public void Add(Product product, string createdByName)
+        public IDataResult<ProductDto> Add(Product product, string createdByName)
         {
             var productAdd =
                 _adoNetDataReader.GetProductDataReader($"select * from dbo.Products where Name = '{product.Name}'");
@@ -64,17 +107,21 @@ namespace ECommmerce.Service.Concrete
                                 $"Values('{product.Name}','{product.Description}','{product.IsDeleted}','{product.IsActive}','{DateTime.Now}'," +
                                 $"'{DateTime.Now}','{createdByName}','{createdByName}','{product.Note}', '{product.Quantity}', '{product.Coast}', '{product.CategoryId}')";
                 _adoNetDataReader.ExecuteNonQuery(script);
+                return new DataResult<ProductDto>(ResultStatus.Success, "The Product has been successfully added.", new ProductDto
+                {
+                    Product = product
+                });
             }
             else
             {
-                throw new Exception("It s already created.");
+                return new DataResult<ProductDto>(ResultStatus.Error, "The Product has been already created.", null);
             }
         }
 
-        public void Update(Product product, string modifiedByName)
+        public IDataResult<ProductDto> Update(Product product, string modifiedByName)
         {
             var productUpdate =
-                _adoNetDataReader.GetProductDataReader($"select * from dbo.Categories where Id = '{product.Id}'");
+                _adoNetDataReader.GetProductDataReader($"select * from dbo.Products where Id = '{product.Id}'");
 
             if (productUpdate.Name != null)
             {
@@ -84,32 +131,40 @@ namespace ECommmerce.Service.Concrete
                                 $"ModifiedByName = '{modifiedByName}',Note = '{product.Note}',Quantity ='{product.Quantity}',Coast ='{product.Coast}',CategoryId ='{product.CategoryId}'" +
                                 $"where Id = '{product.Id}'";
                 _adoNetDataReader.ExecuteNonQuery(script);
+                return new DataResult<ProductDto>(ResultStatus.Success, "The Product has been successfully updated.", new ProductDto
+                {
+                    Product = product
+                });
             }
             else
             {
-                throw new Exception("The product has not been find.");
+                return new DataResult<ProductDto>(ResultStatus.Error, "The product has not been find.", null);
             }
         }
 
-        public void Delete(int productId, string modifiedByName)
+        public IDataResult<ProductDto> Delete(int productId, string modifiedByName)
         {
             var productDelete =
-                _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Categories where Id = '{productId}'");
+                _adoNetDataReader.GetProductDataReader($"select * from dbo.Products where Id = {productId}");
 
             if (productDelete.Name != null)
             {
                 string script = $"Update Products " +
-                                $"Set IsDeleted = 'true',ModifiedByName ='{modifiedByName}',ModifiedDate={DateTime.Now} " +
+                                $"Set IsDeleted = 'true',ModifiedByName ='{modifiedByName}',ModifiedDate='{DateTime.Now}' " +
                                 $"where Id = {productId}";
                 _adoNetDataReader.ExecuteNonQuery(script);
+                return new DataResult<ProductDto>(ResultStatus.Success, "The Product has been successfully deleted.", new ProductDto
+                {
+                    Product = productDelete
+                });
             }
             else
             {
-                throw new Exception("The product has not been find.");
+                return new DataResult<ProductDto>(ResultStatus.Error, "The product has not been find.", null);
             }
         }
 
-        public void HardDelete(int productId)
+        public IDataResult<ProductDto> HardDelete(int productId)
         {
             throw new NotImplementedException();
         }
