@@ -40,16 +40,18 @@ namespace ECommerce.Data.Concrete
                 category.ModifiedDate = DateTime.Now;
                 category.CreatedByName = (string)dataReader["CreatedByName"];
                 category.ModifiedByName = (string)dataReader["ModifiedByName"];
-                category.Note = "note";
+                category.Note = (string)dataReader["Note"];
                 category.Products = null;
                 categoryList.Add(category);
             }
             connection.Close();
             dataReader.Close();
+            /*
             foreach (var category in categoryList)
             {
                 category.Products = GetProductListDataReader($"select * from Products where CategoryId = {category.Id}");
             }
+            */
             return categoryList;
         }
 
@@ -75,7 +77,8 @@ namespace ECommerce.Data.Concrete
                 category.ModifiedByName = (string)dataReader["ModifiedByName"];
                 category.Note = (string)dataReader["Note"];
             }
-            category.Products = GetProductListDataReader($"select * from Products where CategoryId = {category.Id}");
+            category.Products = null;
+            //category.Products = GetProductListDataReader($"select * from Products where CategoryId = {category.Id}");
             return category;
         }
 

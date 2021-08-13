@@ -6,8 +6,10 @@ using System.Net;
 using System.Text;
 using ECommerce.Data.Abstract;
 using ECommerce.Entities.Concrete;
+using ECommerce.Service.Authentication;
 using ECommmerce.Entities.Dtos;
 using ECommmerce.Service.Abstract;
+using ECommmerce.Service.Authentication;
 using ECommmerce.Service.Results.Abstract;
 using ECommmerce.Service.Results.Concrete;
 using Microsoft.Extensions.Configuration;
@@ -17,15 +19,26 @@ namespace ECommmerce.Service.Concrete
     public class CategoryManager : ICategoryService
     {
         private readonly IAdoNetDataReader _adoNetDataReader;
+        private readonly IAuthenticationService _authenticationService;
 
-        public CategoryManager(IAdoNetDataReader adoNetDataReader)
+        public CategoryManager(IAdoNetDataReader adoNetDataReader, IAuthenticationService authenticationService)
         {
             _adoNetDataReader = adoNetDataReader;
+            _authenticationService = authenticationService;
         }
 
         public IDataResult<CategoryDto> Get(int categoryID)
         {
             var queryScript = $"select * from dbo.Categories where Id = {categoryID}";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript = $"select C.Id,C.IsDeleted,C.IsActive,C.CreatedDate,c.ModifiedDate,C.CreatedByName,C.ModifiedByName," +
+                              $"CategoryLanguages.Name,CategoryLanguages.Note,CategoryLanguages.Description " +
+                              $"from Categories C " +
+                              $"inner join CategoryLanguages " +
+                              $"on C.Id = CategoryLanguages.CategoryId and CategoryLanguages.LanguageId = {(int)currentLanguage} and C.Id = {categoryID}";
+            }
             var category = _adoNetDataReader.GetCategoryDataReader(queryScript);
             if (category.Name != null)
             {
@@ -42,7 +55,16 @@ namespace ECommmerce.Service.Concrete
 
         public IDataResult<CategoryListDto> GetAll()
         {
-            string queryScript = "select * from dbo.Categories";
+            var queryScript = $"select * from dbo.Categories";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript = $"select C.Id,C.IsDeleted,C.IsActive,C.CreatedDate,c.ModifiedDate,C.CreatedByName,C.ModifiedByName," +
+                              $"CategoryLanguages.Name,CategoryLanguages.Note,CategoryLanguages.Description " +
+                              $"from Categories C " +
+                              $"inner join CategoryLanguages " +
+                              $"on C.Id = CategoryLanguages.CategoryId and CategoryLanguages.LanguageId = {(int)currentLanguage}";
+            }
             var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
             if (categoryList.Count > 0)
             {
@@ -60,7 +82,16 @@ namespace ECommmerce.Service.Concrete
 
         public IDataResult<CategoryListDto> GetAllByNonDeleted()
         {
-            string queryScript = "select * from dbo.Categories where IsDeleted = false";
+            var queryScript = $"select * from dbo.Categories where IsDeleted = 'false'";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript = $"select C.Id,C.IsDeleted,C.IsActive,C.CreatedDate,c.ModifiedDate,C.CreatedByName,C.ModifiedByName," +
+                              $"CategoryLanguages.Name,CategoryLanguages.Note,CategoryLanguages.Description " +
+                              $"from Categories C " +
+                              $"inner join CategoryLanguages " +
+                              $"on C.Id = CategoryLanguages.CategoryId and CategoryLanguages.LanguageId = {(int)currentLanguage} and C.IsDeleted = 'false'";
+            }
             var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
             if (categoryList.Count > 0)
             {
@@ -78,7 +109,16 @@ namespace ECommmerce.Service.Concrete
 
         public IDataResult<CategoryListDto> GetAllByNonDeletedAndActive()
         {
-            string queryScript = "select * from dbo.Categories where IsDeleted = false and IsActive = true";
+            string queryScript = "select * from dbo.Categories where IsDeleted = 'false' and IsActive = 'true'";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript = $"select C.Id,C.IsDeleted,C.IsActive,C.CreatedDate,c.ModifiedDate,C.CreatedByName,C.ModifiedByName," +
+                              $"CategoryLanguages.Name,CategoryLanguages.Note,CategoryLanguages.Description " +
+                              $"from Categories C " +
+                              $"inner join CategoryLanguages " +
+                              $"on C.Id = CategoryLanguages.CategoryId and CategoryLanguages.LanguageId = {(int)currentLanguage} and C.IsDeleted = 'false' and C.IsActive = 'true'";
+            }
             var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
             if (categoryList.Count > 0)
             {
