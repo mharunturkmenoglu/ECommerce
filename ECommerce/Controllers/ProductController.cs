@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
 {
-    [Authorize]
     public class ProductController : BaseApiController
     {
         private readonly IProductService _productService;

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Service.Abstract;
@@ -11,7 +12,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
 {
-    [Authorize]
     public class CategoriesController : BaseApiController
     {
         private readonly ICategoryService _categoryService;
