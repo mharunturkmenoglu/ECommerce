@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ECommerce.Entities.Concrete;
+using ECommmerce.Entities.Dtos;
+using ECommmerce.Service.Results.Abstract;
 
 namespace ECommmerce.Service.Abstract
 {
     public interface ICategoryService
     {
-        Category Get(int categoryID);
-        List<Category> GetAll();
-        List<Category> GetAllByNonDeleted();
-        List<Category> GetAllByNonDeletedAndActive();
-        void Add(Category category, string createdByName);
-        void Update(Category category, string modifiedByName);
-        void Delete(int categoryID, string modifiedByName);
-        void HardDelete(int categoryID);
+        public IDataResult<CategoryDto> Get(int categoryID);
+        public IDataResult<CategoryListDto> GetAll();
+        public IDataResult<CategoryListDto> GetAllByNonDeleted();
+        public IDataResult<CategoryListDto> GetAllByNonDeletedAndActive();
+        public IDataResult<CategoryDto> Add(Category category, string createdByName);
+        public IDataResult<CategoryDto> Update(Category category, string modifiedByName);
+        public IDataResult<CategoryDto> Delete(int categoryID, string modifiedByName);
+        public IDataResult<CategoryDto> HardDelete(int categoryID);
     }
 }

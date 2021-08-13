@@ -27,12 +27,12 @@ namespace ECommmerce.Service.Concrete
             var product = _adoNetDataReader.GetProductDataReader(queryScript);
             if (product.Name != null)
             {
-                return new DataResult<ProductDto>(ResultStatus.Success, "The Product has been successfully find.", new ProductDto
+                return new DataResult<ProductDto>(ResultStatus.Success, "The Product has been successfully found.", new ProductDto
                 {
                     Product = product
                 });
             }
-            return new DataResult<ProductDto>(ResultStatus.Error, "The Product has not been find.", null);
+            return new DataResult<ProductDto>(ResultStatus.Error, "The Product has not been found.", null);
         }
 
         public IDataResult<ProductListDto> GetAll()
@@ -42,7 +42,7 @@ namespace ECommmerce.Service.Concrete
 
             if (productList.Count > 1)
             {
-                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully find.",
+                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully found.",
                     new ProductListDto
                     {
                         Articles = productList
@@ -57,7 +57,7 @@ namespace ECommmerce.Service.Concrete
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
             if (productList.Count > 1)
             {
-                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully find.",
+                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully found.",
                     new ProductListDto
                     {
                         Articles = productList
@@ -72,7 +72,7 @@ namespace ECommmerce.Service.Concrete
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
             if (productList.Count > 1)
             {
-                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully find.",
+                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully found.",
                     new ProductListDto
                     {
                         Articles = productList
@@ -87,7 +87,7 @@ namespace ECommmerce.Service.Concrete
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
             if (productList.Count > 1)
             {
-                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully find.",
+                return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully found.",
                     new ProductListDto
                     {
                         Articles = productList

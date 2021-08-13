@@ -6,7 +6,10 @@ using System.Net;
 using System.Text;
 using ECommerce.Data.Abstract;
 using ECommerce.Entities.Concrete;
+using ECommmerce.Entities.Dtos;
 using ECommmerce.Service.Abstract;
+using ECommmerce.Service.Results.Abstract;
+using ECommmerce.Service.Results.Concrete;
 using Microsoft.Extensions.Configuration;
 
 namespace ECommmerce.Service.Concrete
@@ -20,35 +23,78 @@ namespace ECommmerce.Service.Concrete
             _adoNetDataReader = adoNetDataReader;
         }
 
-        public Category Get(int categoryID)
+        public IDataResult<CategoryDto> Get(int categoryID)
         {
             var queryScript = $"select * from dbo.Categories where Id = {categoryID}";
             var category = _adoNetDataReader.GetCategoryDataReader(queryScript);
-            return category;
+            if (category.Name != null)
+            {
+                return new DataResult<CategoryDto>(ResultStatus.Success, "The Category has been successfully found.",new CategoryDto
+                {
+                    Category = category
+                });
+            }
+            else
+            {
+                return new DataResult<CategoryDto>(ResultStatus.Error, "Any Category has not been found.", null);
+            }
         }
 
-        public List<Category> GetAll()
+        public IDataResult<CategoryListDto> GetAll()
         {
             string queryScript = "select * from dbo.Categories";
             var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
-            return categoryList;
+            if (categoryList.Count > 0)
+            {
+                return new DataResult<CategoryListDto>(ResultStatus.Success, "Categories have been successfully found.",
+                    new CategoryListDto
+                    {
+                        Categories = categoryList
+                    });
+            }
+            else
+            {
+                return new DataResult<CategoryListDto>(ResultStatus.Error, "Any category has not been found.", null);
+            }
         }
 
-        public List<Category> GetAllByNonDeleted()
+        public IDataResult<CategoryListDto> GetAllByNonDeleted()
         {
             string queryScript = "select * from dbo.Categories where IsDeleted = false";
             var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
-            return categoryList;
+            if (categoryList.Count > 0)
+            {
+                return new DataResult<CategoryListDto>(ResultStatus.Success, "Categories have been successfully found.",
+                    new CategoryListDto
+                    {
+                        Categories = categoryList
+                    });
+            }
+            else
+            {
+                return new DataResult<CategoryListDto>(ResultStatus.Error, "Any category has not been found.", null);
+            }
         }
 
-        public List<Category> GetAllByNonDeletedAndActive()
+        public IDataResult<CategoryListDto> GetAllByNonDeletedAndActive()
         {
             string queryScript = "select * from dbo.Categories where IsDeleted = false and IsActive = true";
             var categoryList = _adoNetDataReader.GetCategoryListDataReader(queryScript);
-            return categoryList;
+            if (categoryList.Count > 0)
+            {
+                return new DataResult<CategoryListDto>(ResultStatus.Success, "Categories have been successfully found.",
+                    new CategoryListDto
+                    {
+                        Categories = categoryList
+                    });
+            }
+            else
+            {
+                return new DataResult<CategoryListDto>(ResultStatus.Error, "Any category has not been found.", null);
+            }
         }
 
-        public void Add(Category category, string createdByName)
+        public IDataResult<CategoryDto> Add(Category category, string createdByName)
         {
             var categoryAdd =
                 _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Categories where Name = '{category.Name}'");
@@ -59,14 +105,18 @@ namespace ECommmerce.Service.Concrete
                                 $"Values('{category.Name}','{category.Description}','{category.IsDeleted}','{category.IsActive}','{DateTime.Now}'," +
                                 $"'{DateTime.Now}','{createdByName}','{createdByName}','{category.Note}')";
                 _adoNetDataReader.ExecuteNonQuery(script);
+                return new DataResult<CategoryDto>(ResultStatus.Success, "The Product has been successfully added.", new CategoryDto
+                {
+                    Category = categoryAdd
+                });
             }
             else
             {
-                throw new Exception("It s already created.");
+                return new DataResult<CategoryDto>(ResultStatus.Error, "The Category has been already created.", null);
             }
         }
 
-        public void Update(Category category, string modifiedByName)
+        public IDataResult<CategoryDto> Update(Category category, string modifiedByName)
         {
             var categoryUpdate =
                 _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Categories where Id = '{category.Id}'");
@@ -79,14 +129,18 @@ namespace ECommmerce.Service.Concrete
                                      $"ModifiedByName = '{modifiedByName}',Note = '{category.Note}'" +
                                      $"where Id = '{category.Id}'";
                 _adoNetDataReader.ExecuteNonQuery(script);
+                return new DataResult<CategoryDto>(ResultStatus.Success, "The Product has been successfully updated.", new CategoryDto
+                {
+                    Category = categoryUpdate
+                });
             }
             else
             {
-                throw new Exception("The category has not been find.");
+                return new DataResult<CategoryDto>(ResultStatus.Error, "The Category has been found.", null);
             }
         }
 
-        public void Delete(int categoryID, string modifiedByName)
+        public IDataResult<CategoryDto> Delete(int categoryID, string modifiedByName)
         {
             var categoryDelete =
                 _adoNetDataReader.GetCategoryDataReader($"select * from dbo.Categories where Id = '{categoryID}'");
@@ -97,14 +151,18 @@ namespace ECommmerce.Service.Concrete
                                 $"Set IsDeleted = 'true',ModifiedByName ='{modifiedByName}', ModifiedDate='{DateTime.Now}' " +
                                 $"where Id = {categoryID}";
                 _adoNetDataReader.ExecuteNonQuery(script);
+                return new DataResult<CategoryDto>(ResultStatus.Success, "The Product has been successfully deleted.", new CategoryDto
+                {
+                    Category = categoryDelete
+                });
             }
             else
             {
-                throw new Exception("The category has not been find.");
+                throw new Exception("The category has not been found.");
             }
         }
 
-        public void HardDelete(int categoryID)
+        public IDataResult<CategoryDto> HardDelete(int categoryID)
         {
             throw new NotImplementedException();
         }
