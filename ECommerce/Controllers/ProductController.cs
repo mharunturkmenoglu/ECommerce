@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
 {
+    [Authorize]
     public class ProductController : BaseApiController
     {
         private readonly IProductService _productService;
@@ -22,22 +23,24 @@ namespace ECommerce.Api.Controllers
         public ActionResult<IEnumerable<Product>> GetAllProduct()
         {
             var result = _productService.GetAllByNonDeleted();
-            if (result.ResultStatus == ResultStatus.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result.Message);
-            }
-            
+            return Ok(result);
+
+
         }
 
         [HttpPost("updateproduct")]
-        public ActionResult<Product> UpdateProduct(Product product)
+        public ActionResult UpdateProduct(Product product)
         {
-            _productService.Update(product, "admin");
-            return product;
+            if (ModelState.IsValid)
+            {
+                var result = _productService.Update(product, "admin");
+                return Ok(result);
+
+            }
+            else
+            {
+                return BadRequest("Please enter a valid product");
+            }
         }
 
         [HttpPost("addproduct")]
@@ -45,8 +48,9 @@ namespace ECommerce.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                _productService.Add(product, "admin");
-                return product;
+                var result = _productService.Add(product, "admin");
+                return Ok(result);
+
             }
             else
             {
@@ -57,14 +61,15 @@ namespace ECommerce.Api.Controllers
         [HttpPost("deleteproduct")]
         public ActionResult<Product> DeleteProduct(int productId)
         {
-            var result = _productService.Delete(productId, "admin");
-            if (result.ResultStatus == ResultStatus.Success)
+            if (ModelState.IsValid)
             {
+                var result = _productService.Delete(productId, "admin");
                 return Ok(result);
+
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest("Enter valid Product Id.");
             }
         }
     }
