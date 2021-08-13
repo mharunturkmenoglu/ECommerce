@@ -13,10 +13,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECommerce.Api.Authentication;
 using ECommerce.Data.Abstract;
 using ECommmerce.Service.Concrete;
 using ECommerce.Data.Concrete;
+using ECommerce.Entities.Concrete;
+using ECommerce.Service.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -54,7 +55,7 @@ namespace ECommerce
                         ValidateAudience = false
                     };
                 });
-            services.AddSingleton<IAuthenticationService>(new AuthenticationManager(tokenKey));
+            services.AddSingleton<IAuthenticationService>(new AuthenticationManager(new User()));
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IUserService, UserManager>();
             services.AddScoped<IProductService, ProductManager>();
