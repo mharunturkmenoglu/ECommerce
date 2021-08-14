@@ -5,15 +5,16 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerce.Entities.Concrete;
+using ECommmerce.Entities.Dtos;
 using ECommmerce.Service.Authentication;
 
 namespace ECommerce.Service.Authentication
 {
     public class AuthenticationManager : IAuthenticationService
     {
-        private User user;
-        public Languages CurrentLanguage { get; set; } = Languages.English;
-
+        private User user = null;
+        private Languages currentLanguage = Languages.English;
+        private bool signIn = false;
 
         public AuthenticationManager(User user)
         {
@@ -21,22 +22,55 @@ namespace ECommerce.Service.Authentication
         }
         public void Authenticate(User user)
         {
-            this.user = user;
+            if (signIn == false)
+            {
+                this.user = user;
+                this.signIn = true;
+            }
+            else
+            {
+                throw new Exception("The user is already authenticated.");
+            }
         }
 
-        public User GetCurrentUser()
+        public void Logout()
         {
-            return user;
+            if (signIn)
+            {
+                signIn = false;
+                user = null;
+            }
+            else
+            {
+                throw new Exception("The user is not authenticated.");
+            }
+        }
+
+        public UserCurrentDto GetCurrentUser()
+        {
+            if (signIn)
+            {
+                return new UserCurrentDto
+                {
+                    Email = user.Email,
+                    Id = user.Id,
+                    Username = user.UserName
+                };
+            }
+            else
+            {
+                throw new Exception("The user is not authenticated.");
+            }
         }
 
         public void SetLanguage(int id)
         {
-            this.CurrentLanguage = (Languages)Enum.ToObject(typeof(Languages), id);
+            this.currentLanguage = (Languages)Enum.ToObject(typeof(Languages), id);
         }
 
         public Languages GetLanguage()
         {
-            return this.CurrentLanguage;
+            return this.currentLanguage;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace ECommerce
                 if (user.UserName != null && user.Password != null)
                 {
                     _authenticationService.Authenticate(user);
-                    return user;
+                    return Ok(user);
                 }
                 else
                 {
@@ -83,6 +83,19 @@ namespace ECommerce
         {
             _authenticationService.SetLanguage(id);
             return Ok("success");
+        }
+        [HttpGet("logout")]
+        public ActionResult Logout()
+        {
+            try
+            {
+                _authenticationService.Logout();
+            }
+            catch (Exception exception)
+            {
+                return Unauthorized();
+            }
+            return Ok("Logged Out");
         }
     }
 }
