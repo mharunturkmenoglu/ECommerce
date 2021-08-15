@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using ECommerce.Data.Abstract;
 using ECommerce.Entities.Concrete;
+using ECommerce.Shared.Authentication;
+using ECommmerce.Shared.Authentication;
 using Microsoft.Extensions.Configuration;
 
 namespace ECommerce.Data.Concrete
@@ -10,10 +12,12 @@ namespace ECommerce.Data.Concrete
     public class AdoNetDataReader : IAdoNetDataReader
     {
         private readonly IConfiguration _config;
+        private readonly IAuthenticationService _authenticationService;
 
-        public AdoNetDataReader(IConfiguration config)
+        public AdoNetDataReader(IConfiguration config, IAuthenticationService authenticationService)
         {
             _config = config;
+            _authenticationService = authenticationService;
         }
 
         public List<Category> GetCategoryListDataReader(string queryScript)
@@ -43,9 +47,20 @@ namespace ECommerce.Data.Concrete
             }
             connection.Close();
             dataReader.Close();
+
+            var currentLanguage = _authenticationService.GetLanguage();
             foreach (var category in categoryList)
             {
-                category.Products = GetProductListDataReader($"select * from Products where CategoryId = {category.Id}");
+                var script = $"select * from Products where CategoryId = {category.Id}";
+                if (currentLanguage != Languages.English)
+                {
+                    script = $"select P.Id,P.IsDeleted,P.IsActive,P.CreatedDate,P.ModifiedDate,P.CreatedByName,P.ModifiedByName," +
+                                  $"P.Quantity,P.Coast,P.CategoryId,ProductLanguages.Name,ProductLanguages.Note,ProductLanguages.Description " +
+                                  $"from Products P " +
+                                  $"inner join ProductLanguages " +
+                                  $"on P.Id = ProductLanguages.ProductId and P.CategoryId ={category.Id} and ProductLanguages.LanguageId = {(int)currentLanguage}";
+                }
+                category.Products = GetProductListDataReader(script);
             }
             return categoryList;
         }
@@ -72,8 +87,17 @@ namespace ECommerce.Data.Concrete
                 category.ModifiedByName = (string)dataReader["ModifiedByName"];
                 category.Note = (string)dataReader["Note"];
             }
-            category.Products = null;
-            category.Products = GetProductListDataReader($"select * from Products where CategoryId = {category.Id}");
+            var currentLanguage = _authenticationService.GetLanguage();
+            var script = $"select * from Products where CategoryId = {category.Id}";
+            if (currentLanguage != Languages.English)
+            {
+                script = $"select P.Id,P.IsDeleted,P.IsActive,P.CreatedDate,P.ModifiedDate,P.CreatedByName,P.ModifiedByName," +
+                         $"P.Quantity,P.Coast,P.CategoryId,ProductLanguages.Name,ProductLanguages.Note,ProductLanguages.Description " +
+                         $"from Products P " +
+                         $"inner join ProductLanguages " +
+                         $"on P.Id = ProductLanguages.ProductId and P.CategoryId ={category.Id} and ProductLanguages.LanguageId = {(int)currentLanguage}";
+            }
+            category.Products = GetProductListDataReader(script);
             return category;
         }
 
