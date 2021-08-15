@@ -1,0 +1,15 @@
+C:\source\ECommerce\ECommerce.Shared\bin\Debug\net5.0\ECommerce.Shared.deps.json
+C:\source\ECommerce\ECommerce.Shared\bin\Debug\net5.0\ECommerce.Shared.dll
+C:\source\ECommerce\ECommerce.Shared\bin\Debug\net5.0\ref\ECommerce.Shared.dll
+C:\source\ECommerce\ECommerce.Shared\bin\Debug\net5.0\ECommerce.Shared.pdb
+C:\source\ECommerce\ECommerce.Shared\bin\Debug\net5.0\ECommmerce.Entities.dll
+C:\source\ECommerce\ECommerce.Shared\bin\Debug\net5.0\ECommmerce.Entities.pdb
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ECommerce.Shared.csproj.AssemblyReference.cache
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ECommerce.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ECommerce.Shared.AssemblyInfoInputs.cache
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ECommerce.Shared.AssemblyInfo.cs
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ECommerce.Shared.csproj.CoreCompileInputs.cache
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ECommerce.Shared.csproj.CopyComplete
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ECommerce.Shared.dll
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ref\ECommerce.Shared.dll
+C:\source\ECommerce\ECommerce.Shared\obj\Debug\net5.0\ECommerce.Shared.pdb

@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ECommerce.Shared/1.0.0": {
+        "dependencies": {
+          "ECommmerce.Entities": "1.0.0"
+        },
+        "runtime": {
+          "ECommerce.Shared.dll": {}
+        }
+      },
+      "ECommmerce.Entities/1.0.0": {
+        "runtime": {
+          "ECommmerce.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ECommerce.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ECommmerce.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -152,6 +152,19 @@
           }
         }
       },
+      "ECommerce.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "ECommmerce.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ECommerce.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ECommerce.Shared.dll": {}
+        }
+      },
       "ECommmerce.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -520,6 +533,11 @@
         "version.txt"
       ]
     },
+    "ECommerce.Shared/1.0.0": {
+      "type": "project",
+      "path": "../ECommerce.Shared/ECommerce.Shared.csproj",
+      "msbuildProject": "../ECommerce.Shared/ECommerce.Shared.csproj"
+    },
     "ECommmerce.Entities/1.0.0": {
       "type": "project",
       "path": "../ECommerce.Entities/ECommmerce.Entities.csproj",
@@ -528,6 +546,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "ECommerce.Shared >= 1.0.0",
       "ECommmerce.Entities >= 1.0.0",
       "Microsoft.Extensions.Configuration.Abstractions >= 5.0.0",
       "System.Data.SqlClient >= 4.8.2"
@@ -562,6 +581,9 @@
           "projectReferences": {
             "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj": {
               "projectPath": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj"
+            },
+            "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj": {
+              "projectPath": "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj"
             }
           }
         }

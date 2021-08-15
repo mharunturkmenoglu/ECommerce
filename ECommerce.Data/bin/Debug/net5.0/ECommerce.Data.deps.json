@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "ECommerce.Data/1.0.0": {
         "dependencies": {
+          "ECommerce.Shared": "1.0.0",
           "ECommmerce.Entities": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
           "System.Data.SqlClient": "4.8.2"
@@ -110,6 +111,14 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
+      "ECommerce.Shared/1.0.0": {
+        "dependencies": {
+          "ECommmerce.Entities": "1.0.0"
+        },
+        "runtime": {
+          "ECommerce.Shared.dll": {}
+        }
+      },
       "ECommmerce.Entities/1.0.0": {
         "runtime": {
           "ECommmerce.Entities.dll": {}
@@ -199,6 +208,11 @@
       "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
+    },
+    "ECommerce.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "ECommmerce.Entities/1.0.0": {
       "type": "project",

@@ -30,6 +30,9 @@
             "projectReferences": {
               "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj": {
                 "projectPath": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj"
+              },
+              "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj": {
+                "projectPath": "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj"
               }
             }
           }
@@ -126,14 +129,14 @@
         }
       }
     },
-    "C:\\source\\ECommerce\\ECommerceService\\ECommerceShared.csproj": {
+    "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\ECommerce\\ECommerceService\\ECommerceShared.csproj",
-        "projectName": "ECommerceShared",
-        "projectPath": "C:\\source\\ECommerce\\ECommerceService\\ECommerceShared.csproj",
+        "projectUniqueName": "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj",
+        "projectName": "ECommerce.Shared",
+        "projectPath": "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj",
         "packagesPath": "C:\\Users\\Mustafa Harun\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\ECommerce\\ECommerceService\\obj\\",
+        "outputPath": "C:\\source\\ECommerce\\ECommerce.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mustafa Harun\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -214,8 +217,8 @@
               "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj": {
                 "projectPath": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj"
               },
-              "C:\\source\\ECommerce\\ECommerceService\\ECommerceShared.csproj": {
-                "projectPath": "C:\\source\\ECommerce\\ECommerceService\\ECommerceShared.csproj"
+              "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj": {
+                "projectPath": "C:\\source\\ECommerce\\ECommerce.Shared\\ECommerce.Shared.csproj"
               }
             }
           }

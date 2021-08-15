@@ -12,7 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ECommerce.Data\ECommerce.Data.csproj" />
     <ProjectReference Include="..\ECommerce.Entities\ECommmerce.Entities.csproj" />
-    <ProjectReference Include="..\ECommerceService\ECommerceShared.csproj" />
+    <ProjectReference Include="..\ECommerce.Shared\ECommerce.Shared.csproj" />
   </ItemGroup>
 
 </Project>

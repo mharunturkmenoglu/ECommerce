@@ -20,3 +20,4 @@ C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.cspr
 C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.dll
 C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ref\ECommmerce.Entities.dll
 C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.pdb
+C:\source\ECommerce\ECommerce.Entities\obj\Debug\net5.0\ECommmerce.Entities.csproj.AssemblyReference.cache
