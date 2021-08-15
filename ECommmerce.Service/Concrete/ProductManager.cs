@@ -1,29 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ECommerce.Data.Abstract;
 using ECommerce.Entities.Concrete;
+using ECommerce.Shared.Authentication;
 using ECommmerce.Entities.Dtos;
 using ECommmerce.Service.Abstract;
-using ECommmerce.Service.Results.Abstract;
-using ECommmerce.Service.Results.Concrete;
+using ECommmerce.Shared.Authentication;
+using ECommmerce.Shared.Results.Abstract;
+using ECommmerce.Shared.Results.Concrete;
 
 namespace ECommmerce.Service.Concrete
 {
     public class ProductManager : IProductService
     {
         private readonly IAdoNetDataReader _adoNetDataReader;
+        private readonly IAuthenticationService _authenticationService;
 
-        public ProductManager(IAdoNetDataReader adoNetDataReader)
+        public ProductManager(IAdoNetDataReader adoNetDataReader, IAuthenticationService authenticationService)
         {
             _adoNetDataReader = adoNetDataReader;
+            _authenticationService = authenticationService;
         }
 
         public IDataResult<ProductDto> Get(int productId)
         {
             var queryScript = $"select * from dbo.Products where Id = {productId}";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript =
+                    $"select P.Id,P.IsDeleted,P.IsActive,P.CreatedDate,P.ModifiedDate,P.CreatedByName,P.ModifiedByName," +
+                    $"P.Quantity,P.Coast,P.CategoryId,ProductLanguages.Name,ProductLanguages.Note,ProductLanguages.Description " +
+                    $"from Products P " +
+                    $"inner join ProductLanguages " +
+                    $"on P.Id = ProductLanguages.ProductId and ProductLanguages.LanguageId = {(int)currentLanguage} and P.Id = {productId}";
+            }
             var product = _adoNetDataReader.GetProductDataReader(queryScript);
             if (product.Name != null)
             {
@@ -38,8 +48,17 @@ namespace ECommmerce.Service.Concrete
         public IDataResult<ProductListDto> GetAll()
         {
             var queryScript = "select * from dbo.Products";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript =
+                    $"select P.Id,P.IsDeleted,P.IsActive,P.CreatedDate,P.ModifiedDate,P.CreatedByName,P.ModifiedByName," +
+                    $"P.Quantity,P.Coast,P.CategoryId,ProductLanguages.Name,ProductLanguages.Note,ProductLanguages.Description " +
+                    $"from Products P " +
+                    $"inner join ProductLanguages " +
+                    $"on P.Id = ProductLanguages.ProductId and ProductLanguages.LanguageId = {(int)currentLanguage}";
+            }
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
-
             if (productList.Count > 1)
             {
                 return new DataResult<ProductListDto>(ResultStatus.Success, "Products have been successfully found.",
@@ -53,7 +72,17 @@ namespace ECommmerce.Service.Concrete
 
         public IDataResult<ProductListDto> GetAllByNonDeleted()
         {
-            string queryScript = "select * from dbo.Products where IsDeleted = 0";
+            var queryScript = "select * from dbo.Products where IsDeleted = 0";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript =
+                    $"select P.Id,P.IsDeleted,P.IsActive,P.CreatedDate,P.ModifiedDate,P.CreatedByName,P.ModifiedByName," +
+                    $"P.Quantity,P.Coast,P.CategoryId,ProductLanguages.Name,ProductLanguages.Note,ProductLanguages.Description " +
+                    $"from Products P " +
+                    $"inner join ProductLanguages " +
+                    $"on P.Id = ProductLanguages.ProductId and P.IsDeleted = 0 and ProductLanguages.LanguageId = {(int)currentLanguage}";
+            }
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
             if (productList.Count > 1)
             {
@@ -68,7 +97,18 @@ namespace ECommmerce.Service.Concrete
 
         public IDataResult<ProductListDto> GetAllByNonDeletedAndActive()
         {
-            string queryScript = "select * from dbo.Products where IsDeleted = 0 and IsActive = 1";
+            var queryScript = "select * from dbo.Products where IsDeleted = 0 and IsActive = 1";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript =
+                    $"select P.Id,P.IsDeleted,P.IsActive,P.CreatedDate,P.ModifiedDate,P.CreatedByName,P.ModifiedByName," +
+                    $"P.Quantity,P.Coast,P.CategoryId,ProductLanguages.Name,ProductLanguages.Note,ProductLanguages.Description " +
+                    $"from Products P " +
+                    $"inner join ProductLanguages " +
+                    $"on P.Id = ProductLanguages.ProductId and P.IsDeleted = 0 and P.IsActive = 1 and ProductLanguages.LanguageId = {(int)currentLanguage}";
+            }
+                
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
             if (productList.Count > 1)
             {
@@ -83,7 +123,17 @@ namespace ECommmerce.Service.Concrete
 
         public IDataResult<ProductListDto> GetAllByCategory(int categoryId)
         {
-            string queryScript = $"select * from dbo.Products where CategoryId = '{categoryId}'";
+            var queryScript = $"select * from dbo.Products where CategoryId = '{categoryId}'";
+            var currentLanguage = _authenticationService.GetLanguage();
+            if (currentLanguage != Languages.English)
+            {
+                queryScript =
+                    $"select P.Id,P.IsDeleted,P.IsActive,P.CreatedDate,P.ModifiedDate,P.CreatedByName,P.ModifiedByName," +
+                    $"P.Quantity,P.Coast,P.CategoryId,ProductLanguages.Name,ProductLanguages.Note,ProductLanguages.Description " +
+                    $"from Products P " +
+                    $"inner join ProductLanguages " +
+                    $"on P.Id = ProductLanguages.ProductId and P.IsDeleted = 0 and P.IsActive = 1 and P.CategoryId ={categoryId} and ProductLanguages.LanguageId = {(int)currentLanguage}";
+            }
             var productList = _adoNetDataReader.GetProductListDataReader(queryScript);
             if (productList.Count > 1)
             {

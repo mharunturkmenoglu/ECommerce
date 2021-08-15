@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Service.Abstract;
-using ECommmerce.Service.Results.Concrete;
-using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
 {
@@ -23,8 +19,6 @@ namespace ECommerce.Api.Controllers
         {
             var result = _productService.GetAllByNonDeleted();
             return Ok(result);
-
-
         }
 
         [HttpPost("updateproduct")]

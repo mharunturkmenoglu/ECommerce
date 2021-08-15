@@ -151,6 +151,16 @@
             "rid": "win"
           }
         }
+      },
+      "ECommmerce.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/ECommmerce.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ECommmerce.Entities.dll": {}
+        }
       }
     }
   },
@@ -509,10 +519,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ECommmerce.Entities/1.0.0": {
+      "type": "project",
+      "path": "../ECommerce.Entities/ECommmerce.Entities.csproj",
+      "msbuildProject": "../ECommerce.Entities/ECommmerce.Entities.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "ECommmerce.Entities >= 1.0.0",
       "Microsoft.Extensions.Configuration.Abstractions >= 5.0.0",
       "System.Data.SqlClient >= 4.8.2"
     ]
@@ -543,7 +559,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj": {
+              "projectPath": "C:\\source\\ECommerce\\ECommerce.Entities\\ECommmerce.Entities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

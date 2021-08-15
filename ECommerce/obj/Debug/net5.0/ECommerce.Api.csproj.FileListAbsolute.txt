@@ -20,7 +20,6 @@ C:\source\ECommerce\ECommerce\obj\Debug\net5.0\ECommerce.Api.GeneratedMSBuildEdi
 C:\source\ECommerce\ECommerce\obj\Debug\net5.0\ECommerce.Api.AssemblyInfoInputs.cache
 C:\source\ECommerce\ECommerce\obj\Debug\net5.0\ECommerce.Api.AssemblyInfo.cs
 C:\source\ECommerce\ECommerce\obj\Debug\net5.0\ECommerce.Api.csproj.CoreCompileInputs.cache
-C:\source\ECommerce\ECommerce\obj\Debug\net5.0\ECommerce.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\source\ECommerce\ECommerce\obj\Debug\net5.0\ECommerce.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\source\ECommerce\ECommerce\obj\Debug\net5.0\staticwebassets\ECommerce.Api.StaticWebAssets.Manifest.cache
 C:\source\ECommerce\ECommerce\obj\Debug\net5.0\staticwebassets\ECommerce.Api.StaticWebAssets.xml
@@ -39,3 +38,14 @@ C:\source\ECommerce\ECommerce\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\S
 C:\source\ECommerce\ECommerce\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\source\ECommerce\ECommerce\bin\Debug\net5.0\ECommerce.Data.dll
 C:\source\ECommerce\ECommerce\bin\Debug\net5.0\ECommerce.Data.pdb
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\ECommerce.Api.Views.dll
+C:\source\ECommerce\ECommerce\obj\Debug\net5.0\ECommerce.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\ECommerceShared.dll
+C:\source\ECommerce\ECommerce\bin\Debug\net5.0\ECommerceShared.pdb

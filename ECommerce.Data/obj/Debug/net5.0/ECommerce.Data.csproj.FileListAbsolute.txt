@@ -10,3 +10,6 @@ C:\source\ECommerce\ECommerce.Data\obj\Debug\net5.0\ECommerce.Data.csproj.CoreCo
 C:\source\ECommerce\ECommerce.Data\obj\Debug\net5.0\ECommerce.Data.dll
 C:\source\ECommerce\ECommerce.Data\obj\Debug\net5.0\ref\ECommerce.Data.dll
 C:\source\ECommerce\ECommerce.Data\obj\Debug\net5.0\ECommerce.Data.pdb
+C:\source\ECommerce\ECommerce.Data\bin\Debug\net5.0\ECommmerce.Entities.dll
+C:\source\ECommerce\ECommerce.Data\bin\Debug\net5.0\ECommmerce.Entities.pdb
+C:\source\ECommerce\ECommerce.Data\obj\Debug\net5.0\ECommerce.Data.csproj.CopyComplete

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ECommerce.Data.Abstract;
 using ECommerce.Entities.Concrete;
 using Microsoft.Extensions.Configuration;
@@ -46,12 +43,10 @@ namespace ECommerce.Data.Concrete
             }
             connection.Close();
             dataReader.Close();
-            /*
             foreach (var category in categoryList)
             {
                 category.Products = GetProductListDataReader($"select * from Products where CategoryId = {category.Id}");
             }
-            */
             return categoryList;
         }
 
@@ -78,7 +73,7 @@ namespace ECommerce.Data.Concrete
                 category.Note = (string)dataReader["Note"];
             }
             category.Products = null;
-            //category.Products = GetProductListDataReader($"select * from Products where CategoryId = {category.Id}");
+            category.Products = GetProductListDataReader($"select * from Products where CategoryId = {category.Id}");
             return category;
         }
 
