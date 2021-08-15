@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ECommerce.Entities.Concrete;
+﻿using ECommerce.Entities.Concrete;
 using ECommmerce.Entities.Dtos;
-using ECommmerce.Service.Results.Abstract;
+using ECommmerce.Shared.Results.Abstract;
 
 namespace ECommmerce.Service.Abstract
 {

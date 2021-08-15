@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
-using System.Text;
 using ECommerce.Data.Abstract;
 using ECommerce.Entities.Concrete;
-using ECommerce.Service.Authentication;
+using ECommerce.Shared.Authentication;
 using ECommmerce.Entities.Dtos;
 using ECommmerce.Service.Abstract;
-using ECommmerce.Service.Authentication;
-using ECommmerce.Service.Results.Abstract;
-using ECommmerce.Service.Results.Concrete;
-using Microsoft.Extensions.Configuration;
+using ECommmerce.Shared.Authentication;
+using ECommmerce.Shared.Results.Abstract;
+using ECommmerce.Shared.Results.Concrete;
 
 namespace ECommmerce.Service.Concrete
 {

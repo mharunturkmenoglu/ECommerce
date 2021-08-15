@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Entities.Dtos;
-using ECommmerce.Service.Authentication;
+using ECommmerce.Shared.Authentication;
 
-namespace ECommerce.Service.Authentication
+namespace ECommerce.Shared.Authentication
 {
     public class AuthenticationManager : IAuthenticationService
     {

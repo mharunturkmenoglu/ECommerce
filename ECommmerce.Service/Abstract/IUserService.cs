@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using ECommerce.Entities.Concrete;
 
 namespace ECommmerce.Service.Abstract
@@ -18,6 +15,5 @@ namespace ECommmerce.Service.Abstract
         void Update(User user, string modifiedByName);
         void Delete(int userID, string modifiedByName);
         void HardDelete(int userID);
-
     }
 }

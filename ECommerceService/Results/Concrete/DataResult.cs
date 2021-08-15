@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ECommmerce.Service.Results.Abstract;
+using ECommmerce.Shared.Results.Abstract;
 
-namespace ECommmerce.Service.Results.Concrete
+namespace ECommmerce.Shared.Results.Concrete
 {
     public class DataResult<T> : IDataResult<T>
     {

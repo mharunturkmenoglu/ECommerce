@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using ECommerce.Api.Controllers;
 using ECommerce.Entities.Concrete;
-using ECommerce.Service.Authentication;
+using ECommerce.Shared.Authentication;
 using ECommmerce.Entities.Dtos;
 using ECommmerce.Service.Abstract;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 // TODO: Add Authentication and Authorization
 // TODO: Use AutoMapper to map UserDtos to user (make it Service Layer)

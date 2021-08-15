@@ -20,3 +20,5 @@ C:\source\ECommerce\ECommmerce.Service\obj\Debug\net5.0\ref\ECommmerce.Service.d
 C:\source\ECommerce\ECommmerce.Service\obj\Debug\net5.0\ECommmerce.Service.pdb
 C:\source\ECommerce\ECommmerce.Service\bin\Debug\net5.0\ECommerce.Data.dll
 C:\source\ECommerce\ECommmerce.Service\bin\Debug\net5.0\ECommerce.Data.pdb
+C:\source\ECommerce\ECommmerce.Service\bin\Debug\net5.0\ECommerceShared.dll
+C:\source\ECommerce\ECommmerce.Service\bin\Debug\net5.0\ECommerceShared.pdb
