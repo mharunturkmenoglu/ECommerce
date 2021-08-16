@@ -10,6 +10,8 @@ using ECommmerce.Service.Concrete;
 using ECommerce.Data.Concrete;
 using ECommerce.Entities.Concrete;
 using ECommerce.Shared.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace ECommerce
 {
@@ -25,6 +27,12 @@ namespace ECommerce
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/User/login/";
+                    options.LogoutPath = "/User/logout/";
+                });
             services.AddSingleton<IAuthenticationService>(new AuthenticationManager(new User()));
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IUserService, UserManager>();
@@ -58,6 +66,11 @@ namespace ECommerce
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                MinimumSameSitePolicy = SameSiteMode.Strict,
+                Secure = CookieSecurePolicy.Always
             });
         }
     }

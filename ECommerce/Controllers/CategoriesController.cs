@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Service.Abstract;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
 {
@@ -12,12 +13,14 @@ namespace ECommerce.Api.Controllers
         {
             _categoryService = categoryService;
         }
+        [Authorize]
         [HttpGet("allcategories")]
         public ActionResult GetAllCategory()
         {
             var result = _categoryService.GetAllByNonDeletedAndActive();
             return Ok(result);
         }
+        [Authorize]
         [HttpPost("addcategory")]
         public ActionResult AddCategory(Category category)
         {
@@ -31,7 +34,7 @@ namespace ECommerce.Api.Controllers
                 return BadRequest("Enter a valid category.");
             }
         }
-
+        [Authorize]
         [HttpPost("updatecategory")]
         public ActionResult UpdateCategory(Category category)
         {
@@ -45,7 +48,7 @@ namespace ECommerce.Api.Controllers
                 return BadRequest("Enter a valid category.");
             }
         }
-
+        [Authorize]
         [HttpPost("deletecategory")]
         public ActionResult DeleteCategory(int productId)
         {

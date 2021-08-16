@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Service.Abstract;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
 {
@@ -14,13 +14,14 @@ namespace ECommerce.Api.Controllers
         {
             _productService = productService;
         }
+        [Authorize]
         [HttpGet("allproducts")]
         public ActionResult<IEnumerable<Product>> GetAllProduct()
         {
             var result = _productService.GetAllByNonDeleted();
             return Ok(result);
         }
-
+        [Authorize]
         [HttpPost("updateproduct")]
         public ActionResult UpdateProduct(Product product)
         {
@@ -35,7 +36,7 @@ namespace ECommerce.Api.Controllers
                 return BadRequest("Please enter a valid product");
             }
         }
-
+        [Authorize]
         [HttpPost("addproduct")]
         public ActionResult<Product> AddProduct(Product product)
         {
@@ -50,7 +51,7 @@ namespace ECommerce.Api.Controllers
                 return BadRequest("Enter valid product.");
             }
         }
-
+        [Authorize]
         [HttpPost("deleteproduct")]
         public ActionResult<Product> DeleteProduct(int productId)
         {
