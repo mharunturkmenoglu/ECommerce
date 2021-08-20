@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Service.Abstract;
+using ECommmerce.Shared.Results.Concrete;
 using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
@@ -19,17 +20,30 @@ namespace ECommerce.Api.Controllers
         public ActionResult<IEnumerable<Product>> GetAllProduct()
         {
             var result = _productService.GetAllByNonDeleted();
-            return Ok(result);
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound(result);
+            }
         }
         [Authorize]
-        [HttpPost("updateproduct")]
+        [HttpPut("updateproduct")]
         public ActionResult UpdateProduct(Product product)
         {
             if (ModelState.IsValid)
             {
                 var result = _productService.Update(product, "admin");
-                return Ok(result);
-
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound(result);
+                }
             }
             else
             {
@@ -43,8 +57,14 @@ namespace ECommerce.Api.Controllers
             if (ModelState.IsValid)
             {
                 var result = _productService.Add(product, "admin");
-                return Ok(result);
-
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return Conflict(result);
+                }
             }
             else
             {
@@ -52,13 +72,20 @@ namespace ECommerce.Api.Controllers
             }
         }
         [Authorize]
-        [HttpPost("deleteproduct")]
+        [HttpPatch("deleteproduct")]
         public ActionResult<Product> DeleteProduct(int productId)
         {
             if (ModelState.IsValid)
             {
                 var result = _productService.Delete(productId, "admin");
-                return Ok(result);
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound(result);
+                }
 
             }
             else

@@ -72,7 +72,7 @@ namespace ECommerce
             }
             else
             {
-                return BadRequest("Wrong Email or Password");
+                return BadRequest("Enter a valid Email or Password");
             }
         }
         [Authorize]
@@ -100,23 +100,22 @@ namespace ECommerce
             }
             else
             {
-                return BadRequest("Wrong Email or Password");
+                return BadRequest("Enter a valid Email or Password");
             }
         }
-        [Authorize]
-        [HttpPost("changeLanguage")]
+        [HttpPatch("changeLanguage")]
         public ActionResult SetLanguage(int id)
         {
             _authenticationService.SetLanguage(id);
             return Ok("success");
         }
         [Authorize]
-        [HttpGet("logout")]
+        [HttpPatch("logout")]
         public async Task<ActionResult> Logout()
         {
             await HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);
-
+            _authenticationService.Logout();
             return Ok("succesfully logged out");
         }
     }

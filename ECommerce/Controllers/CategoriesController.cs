@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ECommerce.Entities.Concrete;
 using ECommmerce.Service.Abstract;
+using ECommmerce.Shared.Results.Concrete;
 using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce.Api.Controllers
@@ -18,7 +19,14 @@ namespace ECommerce.Api.Controllers
         public ActionResult GetAllCategory()
         {
             var result = _categoryService.GetAllByNonDeletedAndActive();
-            return Ok(result);
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound(result);
+            }
         }
         [Authorize]
         [HttpPost("addcategory")]
@@ -27,7 +35,14 @@ namespace ECommerce.Api.Controllers
             if (ModelState.IsValid)
             {
                 var result = _categoryService.Add(category, "admin");
-                return Ok(result);
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return Conflict(result);
+                }
             }
             else
             {
@@ -35,13 +50,20 @@ namespace ECommerce.Api.Controllers
             }
         }
         [Authorize]
-        [HttpPost("updatecategory")]
+        [HttpPut("updatecategory")]
         public ActionResult UpdateCategory(Category category)
         {
             if (ModelState.IsValid)
             {
                 var result = _categoryService.Update(category, "admin");
-                return Ok(result);
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound(result);
+                }
             }
             else
             {
@@ -49,13 +71,20 @@ namespace ECommerce.Api.Controllers
             }
         }
         [Authorize]
-        [HttpPost("deletecategory")]
-        public ActionResult DeleteCategory(int productId)
+        [HttpPatch("deletecategory")]
+        public ActionResult DeleteCategory(int categoryId)
         {
             if (ModelState.IsValid)
             {
-                var result = _categoryService.Delete(productId, "admin");
-                return Ok(result);
+                var result = _categoryService.Delete(categoryId, "admin");
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound(result);
+                }
             }
             else
             {
